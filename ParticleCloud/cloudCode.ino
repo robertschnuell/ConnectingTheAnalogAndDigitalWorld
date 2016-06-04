@@ -15,7 +15,7 @@ more informations:
 
 
 //
-int lightPin = D0;
+int lightPin = D7;
 
 boolean lightStatuse = false;
 
