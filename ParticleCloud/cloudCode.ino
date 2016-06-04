@@ -13,39 +13,41 @@ more informations:
 
 
 
+
+//
 int lightPin = D0;
 
 boolean lightStatuse = false;
 
 
 
-//INIT
+//initialization (this part is only done once at the start of the microcontroller)
 void setup() {
     
-    pinMode ( lightPin, OUTPUT);
-    Spark.function("event", event);
+    
+    pinMode ( lightPin, OUTPUT);   // set the pin active which is used
+    Spark.function("event", event); //tell the cloud whats the name of the function 
 
 }
 
 
-
-
-
+//this function will be activated everytime the button on the website is pressed
 int event()
 {
     
    
     
-    lightStatuse = !lightStatuse;
+    lightStatuse = !lightStatuse;   //the status of the light is set on its revered status (on -> off & off -> on)
     
     
+    //this query decides whats the status of the light and powering it on or switch it of
     if(lightStatuse) {
         digitalWrite(lightPin,HIGH);
     } else {
         digitalWrite(lightPin,LOW);
     }
     
-    return 0;
+    return 0;  //just a callback for the Cloud that everything is running fine
 
 }
   
