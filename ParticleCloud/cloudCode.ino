@@ -32,7 +32,7 @@ void setup() {
 
 
 //this function will be activated everytime the button on the website is pressed
-int event()
+int event(String cmd)
 {
     
    
