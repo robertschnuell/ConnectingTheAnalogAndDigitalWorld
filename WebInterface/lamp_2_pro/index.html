@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>DMY | Lamp One</title>
+		<meta charset="utf-8">
+		<link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="content">
+				<h1>Lamp Two</h1>
+				<button id="button" title"button" onClick="buttonToCloud()">
+					<img src="src/IO.png" />
+				</button>
+                
+				<div class="clear"></div>
+				<p id="sliderText">Input a blink interval</p>
+				<input id="slider" type="range" value="0" min="0" max="10" step="1" oninput="outputUpdate(value)" onChange="sliderToCloud()" />
+				<span id="interval">Off</span>
+			</div>
+			<div id="footer">
+				<p> DMY 2016 | Connecting the Analog and Digital World | Hosted by Prof. Hannes Nehls, Robert Schnüll and Frederik Ueberschär</p>
+			</div>
+		</div>
+        
+        
+        <script type="text/javascript">
+			var deviceID    = "place Id here";
+			var accessToken = "place token here";
+			var setFunc = "event";
+	
+			function buttonToCloud() {	
+				var requestURL = "https://api.particle.io/v1/devices/" +deviceID + "/" + setFunc + "/";
+					$.post( requestURL, { access_token: accessToken });
+			 }
+			 
+			 function sliderToCloud() {
+				var input= document.getElementById("slider").value; 
+				var requestURL = "https://api.particle.io/v1/devices/" +deviceID + "/" + setFunc + "/";
+					$.post( requestURL, { params: input, access_token: accessToken });		
+			 }
+	      </script>
+
+        
+	</body>
+</html>
